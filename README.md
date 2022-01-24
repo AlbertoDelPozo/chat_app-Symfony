@@ -33,7 +33,7 @@ Próximamente estará disponible
 
 * [Visual Studio](https://code.visualstudio.com) - Entorno utilizado
 * [PHP](https://www.php.net/manual/es/intro-whatis.php) - Lenguaje utilizado
-*[Symfony](https://symfony.com) - Framework utilizado
+* [Symfony](https://symfony.com) - Framework utilizado
 * [FontAwesome](https://fontawesome.com) - Iconos de leido o no el mensaje
 * [Bootstrap](https://getbootstrap.com) - Estilos utilizados
 
