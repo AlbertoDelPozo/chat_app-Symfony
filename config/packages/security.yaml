@@ -26,6 +26,8 @@ security:
             form_login:
                 login_path: login
                 check_path: login
+                default_target_path: home
+                always_use_default_target_path: true
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
             logout:
