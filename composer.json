@@ -44,7 +44,7 @@
         "symfony/webapp-meta": "^1.0",
         "symfony/webpack-encore-bundle": "^1.12",
         "symfony/yaml": "6.0.*",
-        "symfonycasts/verify-email-bundle": "^1.7",
+        "symfonycasts/verify-email-bundle": "^1.8",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
     },

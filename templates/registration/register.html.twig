@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
-
+{# {% form_theme form 'bootstrap_5_layout.html.twig' %} #}
 {% block title %}Register{% endblock %}
 
 {% block body %}
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
-    <a href="{{ path('login') }}">Login</a>
+
+<div class="d-flex flex-column justify-content-center align-items-center ">
 
     <h1>Register</h1>
-
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
@@ -17,7 +17,15 @@
             label: 'Password'
         }) }}
         {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
+        <div class="d-flex">
+        <button type="submit" class="btn btn-outline-primary mx-3">Register</button>
+        <a href="{{ path('login') }}" class="btn btn-outline-dark">Login</a>
+        </div>
+        
     {{ form_end(registrationForm) }}
+
+
+</div>
+
+
 {% endblock %}
