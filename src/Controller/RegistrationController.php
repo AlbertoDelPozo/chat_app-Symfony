@@ -53,6 +53,7 @@ class RegistrationController extends AbstractController
             );
             // do anything else you need here, like send an email
 
+
             return $this->redirectToRoute('login');
         }
 

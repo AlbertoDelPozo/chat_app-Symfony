@@ -8,13 +8,15 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<nav class="navbar navbar-dark bg-dark d-flex justify-content-center">
+    {# <a href=" {{  }} ">Send Message</a> #}
+    <a href=" {{ path('outbox') }} " class="btn btn-outline-info">Outbox</a>
+    <a href=" {{ path('inbox') }} " class="btn btn-outline-info mx-3">Inbox</a>
+</nav>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/aprit/Documents/GitHub/chat_app-Symfony/src/Controller/SendMessageController.php'|file_link(0) }}">src/Controller/SendMessageController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/aprit/Documents/GitHub/chat_app-Symfony/templates/send_message/index.html.twig'|file_link(0) }}">templates/send_message/index.html.twig</a></code></li>
-    </ul>
+
+<div class="d-flex justify-content-center">
+    <h1>Send Message</h1>
+
 </div>
 {% endblock %}

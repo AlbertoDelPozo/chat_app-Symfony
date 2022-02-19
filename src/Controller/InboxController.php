@@ -15,4 +15,5 @@ class InboxController extends AbstractController
             'controller_name' => 'InboxController',
         ]);
     }
+    
 }
