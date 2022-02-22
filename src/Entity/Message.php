@@ -28,7 +28,7 @@ class Message
     #[ORM\Column(type: 'integer')]
     private $reciver;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $img;
 
     public function getId(): ?int
@@ -101,10 +101,11 @@ class Message
         return $this->img;
     }
 
-    public function setImg(string $img): self
+    public function setImg(?string $img): self
     {
         $this->img = $img;
 
         return $this;
     }
+
 }

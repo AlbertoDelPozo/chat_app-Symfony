@@ -1,20 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SendMessageController!{% endblock %}
+{% block title %}Send Message!!
+{% endblock %}
 
 {% block body %}
 
-<nav class="navbar navbar-dark bg-dark d-flex justify-content-center">
-    {# <a href=" {{  }} ">Send Message</a> #}
-    <a href=" {{ path('outbox') }} " class="btn btn-outline-info">Outbox</a>
-    <a href=" {{ path('inbox') }} " class="btn btn-outline-info mx-3">Inbox</a>
-</nav>
+	<nav
+		class="navbar navbar-dark bg-dark d-flex justify-content-center">
+		{# <a href=" {{  }} ">Send Message</a> #}
+		<a href=" {{ path('outbox') }} " class="btn btn-outline-info">Outbox</a>
+		<a href=" {{ path('inbox') }} " class="btn btn-outline-info mx-3">Inbox</a>
+		<a href=" {{ path('app_logout') }} " class="btn btn-outline-danger align-self-end">Logout</a>
+
+	</nav>
 
 
-<div class="container-fluid mx-auto">
-    <h1>Send Message</h1>
+	<div class="d-flex flex-column justify-content-center align-items-center mt-2">
+		<h1>Send Message</h1>
 
-    <form class="needs-validation" method="post" novalidate enctype="multipart/form-data">
+		<form class="needs-validation d-flex flex-column justify-content-center align-items-center mt-2 w-100" method="post" novalidate enctype="multipart/form-data">
 			<div class="col-md-6 mb-3">
 				<label for="username">To:
 				</label>
@@ -35,10 +39,10 @@
 				<label for="fileToUpload" class="form-label">Attach file or image</label>
 				<input type="file" class="form-control" name="fileToUpload" id="fileToUpload">
 			</div>
-			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" type="submit">Send</button>
-				<a href="index.php?page=new-message-recipients" class="btn btn-primary btn-lg btn-block">Send message to multiple users</a>
+			<div class="d-flex justify-content-center align-items-center">
+				<button class="btn btn-outline-success mx-3" type="submit">Send</button>
+				<a href="index.php?page=new-message-recipients" class="btn btn-outline-success">Send message to multiple users</a>
 			</div>
 		</form>
-</div>
+	</div>
 {% endblock %}

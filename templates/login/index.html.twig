@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LoginController!{% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block body %}
     {% if error %}
@@ -11,14 +11,16 @@
     <div class="d-flex flex-column justify-content-center align-items-center">
         <h1>Login</h1>
         <form action="{{ path('login') }}" class="d-flex flex-column justify-content-center align-items-center" method="post">
-            <label for="username">Email: </label>
-            <input type="text" id="username" name="_username" value="{{ last_username }}" />
+            <label for="username" class="form-label">Email: </label>
+            <input type="text" id="username" class="form-label" name="_username" value="{{ last_username }}" placeholder="name@example.com"/>
 
-            <label for="password">Password: </label>
-            <input type="password" id="password" name="_password"  />
-        
-            <button type="submit" class="btn btn-outline-primary">Login</button>
-            <a href="{{ path('app_register') }}" class="btn btn-outline-dark">Signup</a>
+            <label for="password" class="form-label">Password: </label>
+            <input type="password" id="password" class="form-label" name="_password"  />
+
+            <div class="d-flex">
+            <button type="submit" class="btn btn-outline-primary mx-2">Login</button>
+            <a href="{{ path('app_register') }}" class="btn btn-outline-dark mx-2">Signup</a>
+            </div>
         </form>
     </div>
 
