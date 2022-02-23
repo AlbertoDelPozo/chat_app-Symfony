@@ -16,6 +16,15 @@ class InboxController extends AbstractController
 
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
+        $allUsers = $userRepository->findAll();
+
+        // $messages = $messageRepository->createQueryBuilder('u')
+        //     ->andWhere('u.sender = :val')
+        //     ->setParameter('val', $email)
+        //     ->orderBy('u.date', 'DESC')
+        //     ->getQuery()
+        //     ->getResult();
+
         $messages = $messageRepository
             ->findBy(
                 ['reciver' => $user->getId()]
@@ -23,7 +32,8 @@ class InboxController extends AbstractController
             
 
         return $this->render('inbox/index.html.twig', [
-            'inbox_message' => $messages
+            'inbox_message' => $messages,
+            'users' => $allUsers
         ]);
     }
 }
