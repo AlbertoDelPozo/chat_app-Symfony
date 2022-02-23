@@ -18,28 +18,29 @@
 		<h1>Inbox</h1>
 
 		{% for message in inbox_message %}
-			{% for user in users %}
-
-				<div class="card mb-2" style="width: 18rem;">
-					<div class="card-body">
-						{% if user.id == message.sender %}
-
-
-							<h6 class="card-title">{{ user.email }}</h6>
+				<a href="#" class="card mb-2 ">
+					<div class="card-body" style="width: 18rem;">
+						<div>
+							{% for user in users %}
+							{% if user.id == message.sender %}
 
 
-						{% endif %}
-						<p class="card-text">{{ message.message }}</p>
-						{# {% if message.is_read == 0 %}
-											<i class="fas fa-envelope"></i>
-											{% else %}
-											<i class="fas fa-envelope-open"></i>
-										{% endif %} #}
+								<h6 class="card-title">{{ user.email }}</h6>
 
 
+							{% endif %}
+							{% endfor %}
+							<p class="card-text">{{ message.message }}</p>
+							{# {% if message.is_read == 0 %}
+																		<i class="fas fa-envelope"></i>
+																		{% else %}
+																		<i class="fas fa-envelope-open"></i>
+																	{% endif %} #}
+
+
+						</div>
 					</div>
-				</div>
-			{% endfor %}
+				</a>
 		{% endfor %}
 	</div>
 {% endblock %}

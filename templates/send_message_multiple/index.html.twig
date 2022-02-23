@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Send Message!!
-{% endblock %}
+{% block title %}Multiple {% endblock %}
 
 {% block body %}
 
@@ -9,14 +8,12 @@
 		class="navbar navbar-dark bg-dark d-flex justify-content-center">
 		{# <a href=" {{  }} ">Send Message</a> #}
 		<a href=" {{ path('outbox') }} " class="btn btn-outline-info">Outbox</a>
-		<a href=" {{ path('inbox') }} " class="btn btn-outline-info ms-3">Inbox</a>
-		<a href=" {{ path('send_message_multiple') }} " class="btn btn-outline-success ms-3">Send To Many</a>
-		<a href=" {{ path('app_logout') }} " class="btn btn-outline-danger align-self-end ms-3">Logout</a>
+		<a href=" {{ path('inbox') }} " class="btn btn-outline-info mx-3">Inbox</a>
+		<a href=" {{ path('app_logout') }} " class="btn btn-outline-danger align-self-end">Logout</a>
 
 	</nav>
 
-
-	<div class="d-flex flex-column justify-content-center align-items-center mt-2">
+    <div class="d-flex flex-column justify-content-center align-items-center mt-2">
 		<h1>Send Message</h1>
 
 		<form class="needs-validation d-flex flex-column justify-content-center align-items-center mt-2 w-100" method="post" novalidate enctype="multipart/form-data">
@@ -46,4 +43,13 @@
 			</div>
 		</form>
 	</div>
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/Users/aprit/Documents/GitHub/chat_app-Symfony/src/Controller/SendMessageMultipleController.php'|file_link(0) }}">src/Controller/SendMessageMultipleController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/Users/aprit/Documents/GitHub/chat_app-Symfony/templates/send_message_multiple/index.html.twig'|file_link(0) }}">templates/send_message_multiple/index.html.twig</a></code></li>
+    </ul>
+</div>
 {% endblock %}

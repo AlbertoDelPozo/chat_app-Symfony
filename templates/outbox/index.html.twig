@@ -29,20 +29,27 @@
 		<h1>Outbox</h1>
 
 		{% for message in outbox_message %}
-			<div class="card mb-2" style="width: 18rem;">
-				<div class="card-body">
-					<h5 class="card-title">{{ message.reciver }}</h5>
-					<p class="card-text">{{ message.message }}</p>
 
-					{# {% if message.is_Read == false %}
-											<i class="fas fa-envelope"></i>
-										{% else %}
-											<i class="fas fa-envelope-open"></i>
-										{% endif %} #}
+				<div class="card mb-2" style="width: 18rem;">
+					<div class="card-body">
+						{% for user in users %}
+						{% if user.id == message.reciver %}
+							<h6 class="card-title">{{ user.email }}</h6>
 
 
+						{% endif %}
+						{% endfor %}
+						<p class="card-text">{{ message.message }}</p>
+
+						{# {% if message.is_Read == false %}
+																																												<i class="fas fa-envelope"></i>
+																																											{% else %}
+																																												<i class="fas fa-envelope-open"></i>
+																																											{% endif %} #}
+
+
+					</div>
 				</div>
-			</div>
 		{% endfor %}
 	</div>
 {% endblock %}
