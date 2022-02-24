@@ -24,7 +24,7 @@ class SendMessageMultipleController extends AbstractController
 
         $entityManager = $doctrine->getManager();
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['messageMultiple'])) {
+        if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['messageMultiple'])) {
             foreach ($_POST['messageMultiple'] as $participant) {
                 $message = new Message();
                 // * Get id of the user from the email

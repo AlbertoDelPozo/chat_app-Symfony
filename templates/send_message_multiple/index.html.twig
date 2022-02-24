@@ -25,7 +25,7 @@
 				<div class="invalid-feedback">
 					Valid user name is required.
 				</div>
-				<select class="form-select" multiple aria-label="multiple select example" name="messageParticipants[]" id="messageParticipants">
+				<select class="form-select" multiple aria-label="multiple select example" name="messageMultiple[]" id="messageMultiple">
 					{% for user in users %}
 						{% if app.user.email != user.email %}
 							<option value={{user.email}}>{{user.email}}</option>
