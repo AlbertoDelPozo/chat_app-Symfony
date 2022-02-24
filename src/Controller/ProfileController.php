@@ -21,8 +21,9 @@ class ProfileController extends AbstractController
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             $user->setTlf($_POST['changeTlf']);
-            if(isset($_POST['custom-pfp']) && $_POST['custom-pfp'] !== '') $user->setProfileImage($_POST['fileToUpload']);
-            else $user->setProfileImage('default.jpg');
+            if(isset($_POST['fileToUpload']) && $_POST['fileToUpload'] !== '') {
+                $user->setProfileImage($_POST['fileToUpload']);
+            } 
 
             //Save changes in database
             $entityManager->persist($user);

@@ -18,11 +18,11 @@
 	<div class="d-flex flex-column justify-content-center align-items-center mt-2">
 		<h1>Profile</h1>
 
-		<div class="text-center">
-			<img src="{{ asset('uploads/'~app.user.profileimage) }}" class="rounded">
+		<div class="text-center" style="width: 200px; height: 200px" >
+			<img src="{{ asset('uploads/'~app.user.profileimage) }}" class="img-thumbnail">
 		</div>
         {{image}}
-		<form method="post" class="form" accept-charset="UTF-8">
+		<form method="post" class="form mt-3" enctype="multipart/form-data">
 			<div class="mb-3">
 				<label for="disabledTextInput" class="form-label">Email</label>
 				<input type="text" id="disabledTextInput" class="form-control" disabled value="{{app.user.email}}">
