@@ -5,18 +5,20 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\Persistance\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\UserRepository;
+use App\Entity\Message;
+use App\Repository\MessageRepository;
 
 class SendMessageMultipleController extends AbstractController
 {
     #[Route('/send/message/multiple', name: 'send_message_multiple')]
-    public function index(ManagerRegistry $doctrine, UserRepository $userRepository): Response
+    public function index(ManagerRegistry $doctrine, UserRepository $userRepository, MessageRepository $messageRepository): Response
     {
 
         $date = new \DateTime('@' . strtotime('now'));
 
-        /** "var \App\Entity\User $user */
+        /** @var \App\Entity\User $user */
         $user = $this->getUser();
         $allUsers = $userRepository->findAll();
 
@@ -24,7 +26,7 @@ class SendMessageMultipleController extends AbstractController
 
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['messageMultiple'])) {
             foreach ($_POST['messageMultiple'] as $participant) {
-                $message = new Messages();
+                $message = new Message();
                 // * Get id of the user from the email
                 $reciver = $userRepository
                     ->findBy(
@@ -38,8 +40,9 @@ class SendMessageMultipleController extends AbstractController
                 $entityManager->persist($message);
                 $entityManager->flush();
             }
-            return $this->redirectToRoute('messages_index');
+            return $this->redirectToRoute('outbox');
         }
+        
         return $this->render('send_message_multiple/index.html.twig', [
             'controller_name' => 'SendMessageMultipleController',
             'users' => $allUsers

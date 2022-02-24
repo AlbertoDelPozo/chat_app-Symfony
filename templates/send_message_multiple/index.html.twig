@@ -21,10 +21,17 @@
 				<label for="username">To:
 				</label>
 				<!-- <input type="text" class="form-control" id="username" name="username" placeholder="" value="<?= $touseridurl ?>" required hidden> -->
-				<input type="text" class="form-control" id="username" name="username" list="contacts" placeholder="" required>
+				{# <input type="text" class="form-control" id="username" name="username" list="contacts" placeholder="" required> #}
 				<div class="invalid-feedback">
 					Valid user name is required.
 				</div>
+				<select class="form-select" multiple aria-label="multiple select example" name="messageParticipants[]" id="messageParticipants">
+					{% for user in users %}
+						{% if app.user.email != user.email %}
+							<option value={{user.email}}>{{user.email}}</option>
+						{% endif %}
+					{% endfor %}
+				</select>
 			</div>
 			<div class="col-md-6 mb-3">
 				<label for="message">Message</label>
@@ -43,13 +50,5 @@
 			</div>
 		</form>
 	</div>
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/aprit/Documents/GitHub/chat_app-Symfony/src/Controller/SendMessageMultipleController.php'|file_link(0) }}">src/Controller/SendMessageMultipleController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/aprit/Documents/GitHub/chat_app-Symfony/templates/send_message_multiple/index.html.twig'|file_link(0) }}">templates/send_message_multiple/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}
