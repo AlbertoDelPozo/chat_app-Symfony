@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile
+{% endblock %}
+
+{% block body %}
+
+
+	<nav
+		class="navbar navbar-dark bg-dark d-flex justify-content-center">
+		{# <a href=" {{  }} ">Send Message</a> #}
+		<a href=" {{ path('inbox') }} " class="btn btn-outline-info">Inbox</a>
+		<a href=" {{ path('outbox') }} " class="btn btn-outline-info mx-3">Outbox</a>
+		<a href=" {{ path('send_message') }} " class="btn btn-outline-success">Send Message</a>
+		<a href=" {{ path('app_logout') }} " class="btn btn-outline-danger mx-3">Logout</a>
+	</nav>
+
+	<div class="d-flex flex-column justify-content-center align-items-center mt-2">
+		<h1>Profile</h1>
+
+		<div class="text-center">
+			<img src="{{ asset('uploads/'~profileimage) }}" class="rounded">
+		</div>
+        {{image}}
+		<form method="post" class="form" accept-charset="UTF-8">
+			<div class="mb-3">
+				<label for="disabledTextInput" class="form-label">Email</label>
+				<input type="text" id="disabledTextInput" class="form-control" disabled value="{{app.user.email}}">
+			</div>
+
+			<div class="mb-3">
+				<label for="location" class="form-label">Change Phone</label>
+				<input type="text" id="location" class="form-control" name="changeTlf" value="{{ app.user.Tlf}}">
+			</div>
+
+			<div class="mb-3">
+				<label for="fileToUpload" class="form-label">Attach file or image</label>
+				<input type="file" class="form-control" name="fileToUpload" id="fileToUpload">
+			</div>
+
+			<div class="d-flex justify-content-center align-items-center">
+				<button type="submit" class="btn btn-outline-success">Save Changes</button>
+				<button type="reset" class="btn btn-outline-danger ms-3">Reset Changes</button>
+			</div>
+
+		</form>
+	</div>
+
+{% endblock %}
