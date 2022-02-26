@@ -4,25 +4,12 @@
 {% endblock %}
 
 {% block body %}
-	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
-		}
-	</style>
-
-	<nav
-		class="navbar navbar-dark bg-dark d-flex justify-content-center">
+	<nav class="navbar navbar-dark bg-dark d-flex justify-content-center">
 		{# <a href=" {{  }} ">Send Message</a> #}
-		<a href=" {{ path('inbox') }} " class="btn btn-outline-info">Inbox</a>
-		<a href=" {{ path('send_message') }} " class="btn btn-outline-success mx-3">Send Message</a>
-		<a href=" {{ path('app_logout') }} " class="btn btn-outline-danger">Logout</a>
+		<a href=" {{ path('inbox') }} " class="btn btn-outline-info ms-3">Inbox</a>
+		<a href=" {{ path('send_message') }} " class="btn btn-outline-success ms-3">Send Message</a>
+		<a href=" {{ path('profile') }} " class="btn btn-outline-warning ms-3">Profile</a>
+		<a href=" {{ path('app_logout') }} " class="btn btn-outline-danger ms-3">Logout</a>
 	</nav>
 
 	<div class="d-flex flex-column justify-content-center align-items-center mt-2">
@@ -30,26 +17,26 @@
 
 		{% for message in outbox_message %}
 
-				<div class="card mb-2" style="width: 18rem;">
-					<div class="card-body">
-						{% for user in users %}
+			<div class="card mb-2" style="width: 18rem;">
+				<div class="card-body">
+					{% for user in users %}
 						{% if user.id == message.reciver %}
 							<h6 class="card-title">{{ user.email }}</h6>
 
 
 						{% endif %}
-						{% endfor %}
-						<p class="card-text">{{ message.message }}</p>
+					{% endfor %}
+					<p class="card-text">{{ message.message }}</p>
 
-						{# {% if message.is_Read == false %}
-						<i class="fas fa-envelope"></i>
-						{% else %}
-						<i class="fas fa-envelope-open"></i>
-						{% endif %} #}
+					{# {% if message.is_Read == false %}
+											<i class="fas fa-envelope"></i>
+											{% else %}
+											<i class="fas fa-envelope-open"></i>
+											{% endif %} #}
 
 
-					</div>
 				</div>
+			</div>
 		{% endfor %}
 	</div>
 {% endblock %}
