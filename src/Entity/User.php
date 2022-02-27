@@ -34,11 +34,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $isVerified = false;
 
-    #[ORM\Column(type: 'string', length: 6, nullable: true)]
+    #[ORM\Column(type: 'string', length: 9, nullable: true)]
     private $Tlf;
 
-    #[ORM\Column(type: 'string', length: 500, nullable: true)]
-    private $profileImage;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $Street;
 
     public function getId(): ?int
     {
@@ -134,15 +134,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getProfileImage(): ?string
+    public function getStreet(): ?string
     {
-        return $this->profileImage;
+        return $this->Street;
     }
 
-    public function setProfileImage(?string $profileImage): self
+    public function setStreet(?string $Street): self
     {
-        $this->profileImage = $profileImage;
+        $this->Street = $Street;
 
         return $this;
     }
+
 }

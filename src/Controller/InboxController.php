@@ -21,7 +21,7 @@ class InboxController extends AbstractController
         $allUsers = $userRepository->findAll();
 
         $messages = $messageRepository->createQueryBuilder('u')
-            ->andWhere('u.sender = :val')
+            ->andWhere('u.reciver = :val')
             ->setParameter('val', $user->getId())
             ->orderBy('u.date', 'DESC')
             ->getQuery()

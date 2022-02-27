@@ -7,14 +7,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use App\Service\FileUploader;
-use Symfony\Component\HttpFoundation\Request;
+
 
 
 class ProfileController extends AbstractController
 {
     #[Route('/profile', name: 'profile')]
-    public function index(ManagerRegistry $doctrine, Request $request, FileUploader $fileUploader): Response
+    public function index(ManagerRegistry $doctrine): Response
     {
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
@@ -24,23 +23,25 @@ class ProfileController extends AbstractController
 
             $user->setTlf($_POST['changeTlf']);
 
-            /** @var UploadedFile $brochureFile */
-            $brochureFile = $_FILES["fileToUpload"]["name"];
-            if ($brochureFile) {
-                $brochureFileName = $fileUploader->upload($_FILES['fileToUpload']['name']);
-                $user->setProfileImage($brochureFileName);
-            }
+            $user->setStreet($_POST['street']);
+ 
+            // /** @var UploadedFile $brochureFile */
+            // $brochureFile = $_FILES["fileToUpload"]["name"];
+            // if ($brochureFile) {
+            //     $brochureFileName = $fileUploader->upload($_FILES['fileToUpload']['name']);
+            //     $user->setProfileImage($brochureFileName);
+            // }
+            $entityManager->persist($user);
+            $entityManager->flush();
+    
+            return $this->redirectToRoute('profile');
         }
-        //Save changes in database
-        $entityManager->persist($user);
-        $entityManager->flush();
-
-        return $this->redirectToRoute('profile');
+   
 
 
 
         return $this->render('profile/index.html.twig', [
-            'image' => $user->getProfileImage(),
+            // 'image' => $user(),
         ]);
     }
 }

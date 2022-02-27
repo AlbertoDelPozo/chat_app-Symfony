@@ -19,7 +19,7 @@ class OutboxController extends AbstractController
         $allUsers = $userRepository->findAll();
 
         $messages = $messageRepository->createQueryBuilder('u')
-            ->andWhere('u.reciver = :val')
+            ->andWhere('u.sender = :val')
             ->setParameter('val', $user->getId())
             ->orderBy('u.date', 'DESC')
             ->getQuery()
