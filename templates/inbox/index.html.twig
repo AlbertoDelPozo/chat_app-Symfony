@@ -19,29 +19,29 @@
 		<h1>Inbox</h1>
 
 		{% for message in inbox_message %}
-				<a href="#" class="card mb-2 ">
-					<div class="card-body" style="width: 18rem;">
-						<div>
-							{% for user in users %}
+			<a href=" {{ path('see_message', {'id': message.id}) }} " class="card mb-2 ">
+				<div class="card-body" style="width: 18rem;">
+					<div>
+						{% for user in users %}
+
 							{% if user.id == message.sender %}
-
-
 								<h6 class="card-title">{{ user.email }}</h6>
-
-
 							{% endif %}
-							{% endfor %}
-							<p class="card-text">{{ message.message }}</p>
-							{# {% if message.is_read == 0 %}
-																		<i class="fas fa-envelope"></i>
-																		{% else %}
-																		<i class="fas fa-envelope-open"></i>
-																	{% endif %} #}
+
+						{% endfor %}
+
+						<p class="card-text">{{ message.message }}</p>
+
+						{% if message.isread == 0 %}
+							<i class="fas fa-envelope"></i>
+						{% else %}
+							<i class="fas fa-envelope-open"></i>
+						{% endif %}
 
 
-						</div>
 					</div>
-				</a>
+				</div>
+			</a>
 		{% endfor %}
 	</div>
 {% endblock %}
