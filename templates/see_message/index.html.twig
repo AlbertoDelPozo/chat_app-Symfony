@@ -1,9 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Message
+{% block title %}
+	Message
 {% endblock %}
 
+{# Twig for see_message controller to see all the information of the message recived #}
 {% block body %}
+
+	{# nav var with all the links #}
 	<nav class="navbar navbar-dark bg-dark d-flex justify-content-center">
 		<a href=" {{ path('inbox') }} " class="btn btn-outline-info ms-3">Inbox</a>
 		<a href=" {{ path('outbox') }} " class="btn btn-outline-info ms-3">Outbox</a>
@@ -11,21 +15,27 @@
 		<a href=" {{ path('app_logout') }} " class="btn btn-outline-danger ms-3">Logout</a>
 	</nav>
 
+	{# We show the information of the message selected #}
 	<div class="d-flex flex-column justify-content-center align-items-center mt-2">
+
+		{# User email #}
 		<h3 class="mt-3">{{ users.email }}'s message</h3>
 
+		{# User email and message #}
 		<div class="card-body mt-3" style="width: 18rem;">
 			<div>
 				<h6 class="card-title">{{ users.email }}</h6>
 				<p class="card-text">{{ message[0].message }}</p>
 
+				{# We show if it is read or not #}
 				{% if message[0].isread == 0 %}
 					<i class="fas fa-envelope"></i>
 				{% else %}
 					<i class="fas fa-envelope-open"></i>
 				{% endif %}
 
-			<a href=" {{ path('send_message') }} " class="btn btn-outline-success ms-3">Reply</a>
+				{# Link to reply the message #}
+				<a href=" {{ path('send_message') }} " class="btn btn-outline-success ms-3">Reply</a>
 			</div>
 		</div>
 	{% endblock %}

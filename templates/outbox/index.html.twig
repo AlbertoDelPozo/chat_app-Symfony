@@ -4,8 +4,9 @@
 {% endblock %}
 
 {% block body %}
+
+	{# navbar with all the links to the other pages #}
 	<nav class="navbar navbar-dark bg-dark d-flex justify-content-center">
-		{# <a href=" {{  }} ">Send Message</a> #}
 		<a href=" {{ path('inbox') }} " class="btn btn-outline-info ms-3">Inbox</a>
 		<a href=" {{ path('send_message') }} " class="btn btn-outline-success ms-3">Send Message</a>
 		<a href=" {{ path('profile') }} " class="btn btn-outline-warning ms-3">Profile</a>
@@ -15,26 +16,27 @@
 	<div class="d-flex flex-column justify-content-center align-items-center mt-2">
 		<h1>Outbox</h1>
 
+		{# for each message we show the information from the controller #}
 		{% for message in outbox_message %}
 
 			<div class="card mb-2" style="width: 18rem;">
 				<div class="card-body">
+
 					{% for user in users %}
 						{% if user.id == message.reciver %}
+							{# If the user id is equal to the reciver id we show the email of the reciver #}
 							<h6 class="card-title">{{ user.email }}</h6>
-
-
 						{% endif %}
 					{% endfor %}
+
+					{# We show the message that we have sent #}
 					<p class="card-text">{{ message.message }}</p>
 
-					{# {% if message.is_Read == false %}
-											<i class="fas fa-envelope"></i>
-											{% else %}
-											<i class="fas fa-envelope-open"></i>
-											{% endif %} #}
-
-
+					{% if message.isRead == 0 %}
+						<i class="fas fa-envelope"></i>
+					{% else %}
+						<i class="fas fa-envelope-open"></i>
+					{% endif %}
 				</div>
 			</div>
 		{% endfor %}

@@ -1,43 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profile
+{% block title %}
+	Profile
 {% endblock %}
 
 {% block body %}
-
-
-	<nav
-		class="navbar navbar-dark bg-dark d-flex justify-content-center">
-		{# <a href=" {{  }} ">Send Message</a> #}
+	{# Profile twig for the profile controller #}
+	<nav class="navbar navbar-dark bg-dark d-flex justify-content-center">
 		<a href=" {{ path('inbox') }} " class="btn btn-outline-info">Inbox</a>
 		<a href=" {{ path('outbox') }} " class="btn btn-outline-info mx-3">Outbox</a>
 		<a href=" {{ path('send_message') }} " class="btn btn-outline-success">Send Message</a>
 		<a href=" {{ path('app_logout') }} " class="btn btn-outline-danger mx-3">Logout</a>
 	</nav>
 
+	{# Form for getting the information from the User #}
 	<div class="d-flex flex-column justify-content-center align-items-center mt-2">
 		<h1>Profile</h1>
+		<form
+			method="post" class="form mt-3" enctype="multipart/form-data">
 
-			{# <div class="text-center" style="width: 200px; height: 200px" >
-				<img src="{{ asset('uploads/'~app.user.profileimage) }}" class="img-thumbnail">
-			</div>
-			{{image}} #}
-		<form method="post" class="form mt-3" enctype="multipart/form-data">
+			{# We show the user logged email who can't be changed #}
 			<div class="mb-3">
 				<label for="disabledTextInput" class="form-label">Email</label>
 				<input type="text" id="disabledTextInput" class="form-control" disabled value="{{app.user.email}}">
 			</div>
 
+			{# For changing the user's phone #}
 			<div class="mb-3">
 				<label for="location" class="form-label">Change Phone</label>
 				<input type="text" id="location" class="form-control" name="changeTlf" value="{{ app.user.Tlf}}">
 			</div>
 
+			{# For changing the user's street #}
 			<div class="mb-3">
 				<label for="street" class="form-label">Change Street</label>
 				<input type="text" id="street" class="form-control" name="street" value="{{ app.user.street}}">
 			</div>
 
+			{# Bottons #}
 			<div class="d-flex justify-content-center align-items-center">
 				<button type="submit" class="btn btn-outline-success">Save Changes</button>
 				<button type="reset" class="btn btn-outline-danger ms-3">Reset Changes</button>
