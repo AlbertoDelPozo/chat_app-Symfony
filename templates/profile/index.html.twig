@@ -4,8 +4,11 @@
 	Profile
 {% endblock %}
 
+{# Profile twig for the profile controller #}
+
 {% block body %}
-	{# Profile twig for the profile controller #}
+
+	{# navbar with all the links to the other pages #}
 	<nav class="navbar navbar-dark bg-dark d-flex justify-content-center">
 		<a href=" {{ path('inbox') }} " class="btn btn-outline-info">Inbox</a>
 		<a href=" {{ path('outbox') }} " class="btn btn-outline-info mx-3">Outbox</a>

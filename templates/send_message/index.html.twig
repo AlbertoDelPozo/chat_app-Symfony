@@ -1,30 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Send Message!!
+{% block title %}
+	Send Message!!
 {% endblock %}
+
+{# Twig for send_message controller #}
 
 {% block body %}
 
-	<nav
-		class="navbar navbar-dark bg-dark d-flex justify-content-center">
-		{# <a href=" {{  }} ">Send Message</a> #}
+	{# navbar with all the links #}
+	<nav class="navbar navbar-dark bg-dark d-flex justify-content-center">
 		<a href=" {{ path('outbox') }} " class="btn btn-outline-info">Outbox</a>
 		<a href=" {{ path('inbox') }} " class="btn btn-outline-info ms-3">Inbox</a>
 		<a href=" {{ path('send_message_multiple') }} " class="btn btn-outline-success ms-3">Send To Many</a>
 		<a href=" {{ path('profile') }} " class="btn btn-outline-warning ms-3">Profile</a>
 		<a href=" {{ path('app_logout') }} " class="btn btn-outline-danger align-self-end ms-3">Logout</a>
-
 	</nav>
 
 
 	<div class="d-flex flex-column justify-content-center align-items-center mt-2">
 		<h1>Send Message</h1>
 
+		{# Form to get the message and the reciver of the message#}
 		<form class="needs-validation d-flex flex-column justify-content-center align-items-center mt-2 w-100" method="post" novalidate enctype="multipart/form-data">
 			<div class="col-md-6 mb-3">
-				<label for="username">To:
+				<label for="username">
+					To:
 				</label>
-				<!-- <input type="text" class="form-control" id="username" name="username" placeholder="" value="<?= $touseridurl ?>" required hidden> -->
 				<input type="text" class="form-control" id="username" name="username" list="contacts" placeholder="" required>
 				<div class="invalid-feedback">
 					Valid user name is required.
@@ -43,7 +45,6 @@
 			</div>
 			<div class="d-flex justify-content-center align-items-center">
 				<button class="btn btn-outline-success mx-3" type="submit">Send</button>
-				{# <a href="index.php?page=new-message-recipients" class="btn btn-outline-success">Send message to multiple users</a> #}
 			</div>
 		</form>
 	</div>

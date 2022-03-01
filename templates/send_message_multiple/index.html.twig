@@ -1,18 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Multiple
+{% block title %}
+	Multiple
 {% endblock %}
+
+{# Twig for the send_message_multiple for sending multiple messages#}
 
 {% block body %}
 
-	<nav
-		class="navbar navbar-dark bg-dark d-flex justify-content-center">
-		{# <a href=" {{  }} ">Send Message</a> #}
+	{# navbar with all the links #}
+	<nav class="navbar navbar-dark bg-dark d-flex justify-content-center">
 		<a href=" {{ path('outbox') }} " class="btn btn-outline-info ms-3">Outbox</a>
 		<a href=" {{ path('inbox') }} " class="btn btn-outline-info ms-3">Inbox</a>
 		<a href=" {{ path('profile') }} " class="btn btn-outline-warning ms-3">Profile</a>
 		<a href=" {{ path('app_logout') }} " class="btn btn-outline-danger ms-3">Logout</a>
-
 	</nav>
 
 	<div class="d-flex flex-column justify-content-center align-items-center mt-2">
@@ -25,12 +26,16 @@
 				<div class="invalid-feedback">
 					Valid user name is required.
 				</div>
-				<select class="form-select" multiple aria-label="multiple select example" name="messageMultiple[]" id="messageMultiple">
+				<select
+					class="form-select" multiple aria-label="multiple select example" name="messageMultiple[]" id="messageMultiple">
+
+					{# For each to get all the users from the database #}
 					{% for user in users %}
 						{% if app.user.email != user.email %}
 							<option value={{user.email}}>{{user.email}}</option>
 						{% endif %}
 					{% endfor %}
+					
 				</select>
 			</div>
 			<div class="col-md-6 mb-3">
