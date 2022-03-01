@@ -19,7 +19,7 @@ class OutboxController extends AbstractController
         //we call the entity user to get the user that it is logged
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
-        //we get all the users in order to now who has sent us the email
+        //we get all the users in order to know who has sent us the email
         $allUsers = $userRepository->findAll();
 
         //Query to get the messages sent

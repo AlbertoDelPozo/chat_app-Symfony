@@ -1,18 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inbox
+{% block title %}
+	Inbox
 {% endblock %}
+
+{# Twig inbox controller #}
 
 {% block body %}
 
-	<nav
-		class="navbar navbar-dark bg-dark d-flex justify-content-center">
-		{# <a href=" {{  }} ">Send Message</a> #}
+	{# navbar with all the links to the other pages #}
+	<nav class="navbar navbar-dark bg-dark d-flex justify-content-center">
 		<a href=" {{ path('outbox') }} " class="btn btn-outline-info">Outbox</a>
 		<a href=" {{ path('send_message') }} " class="btn btn-outline-success ms-3">Send Message</a>
 		<a href=" {{ path('profile') }} " class="btn btn-outline-light ms-3">Profile</a>
 		{% if user_role  == "ROLE_ADMIN"%}
-		<a href=" {{ path('admin_index') }} " class="btn btn-outline-light ms-3">Admin Zone</a>
+			<a href=" {{ path('admin_index') }} " class="btn btn-outline-light ms-3">Admin Zone</a>
 		{% endif %}
 		<a href=" {{ path('app_logout') }} " class="btn btn-outline-danger ms-3">Logout</a>
 	</nav>
