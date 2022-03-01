@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+// Login controller created with a command
+
 class LoginController extends AbstractController
 {
     #[Route('/', name: 'login')]
